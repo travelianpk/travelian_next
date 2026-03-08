@@ -1,0 +1,527 @@
+/* ================= SIGN IN PAGE ================= */
+
+.login-wrapper {
+  min-height: 100vh;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Logo */
+
+.auth-logo {
+  width: 220px;
+  margin-bottom: 40px;
+}
+
+/* Card */
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  padding: 40px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* Input Fields */
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 14px 14px 45px;
+  border: 1px solid #e0e0e0;
+  background: #fafafa;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #30398c;
+  background: #ffffff;
+}
+
+/* Icons */
+
+/* ================= AUTH INPUT ICONS ================= */
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Input field */
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px 14px 50px; /* space for icon */
+  border: 1px solid #e0e0e0;
+  background: #fafafa;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #30398c;
+  background: #ffffff;
+}
+
+/* Icon */
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: #999;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+/* Change icon color when input is focused */
+
+.input-group:focus-within .input-icon {
+  color: #30398c;
+}
+/* ================= PASSWORD EYE ICON ================= */
+
+.password-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #999;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease;
+}
+
+.password-toggle:hover {
+  color: #30398c;
+}
+
+/* Remember + Forgot */
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.options a {
+  color: #30398c;
+  text-decoration: none;
+}
+
+.options a:hover {
+  text-decoration: underline;
+}
+
+/* Login Button */
+
+.login-btn {
+  width: 100%;
+  height: 50px;
+  background: #30398c;
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #1f2560;
+}
+
+/* Register Button */
+
+.register-btn {
+  margin-top: 25px;
+  width: 100%;
+  max-width: 420px;
+  height: 50px;
+  border: 1px solid #30398c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #30398c;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.register-btn:hover {
+  background: #30398c;
+  color: #ffffff;
+}
+
+/* ================= REGISTER PAGE ================= */
+
+.register-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f5f6f8;
+  padding: 40px 20px;
+}
+
+.card {
+  width: 100%;
+  max-width: 750px;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 10px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f0f0f0;
+}
+
+.card h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+  color: #222;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid #e2e2e2;
+  border-radius: 6px;
+  background: #fafafa;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #30398c;
+  background: #ffffff;
+}
+
+.error {
+  color: #e53935;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.whatsapp-btn {
+  width: 100%;
+  height: 48px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 50px;
+  background: #30398c;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #1f2560;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #30398c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.thank-you {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  max-width: 500px;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 25px;
+  }
+}
+
+
+
+.airport-wrapper {
+  position: relative;
+}
+
+.airport-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200%;
+  margin-top: 6px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  z-index: 20;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.airport-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.airport-item:hover {
+  background: #f5f7fa;
+}
+
+.airport-city {
+  font-weight: 600;
+}
+
+.airport-name {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.airport-code {
+  font-weight: 600;
+  background: #eef2f7;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+
+/* ===============================
+   GUEST & CABIN WRAPPER
+=================================*/
+
+.guest-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+/* ===============================
+   PANEL CONTAINER
+=================================*/
+
+/* ===============================
+   GUEST PANEL CONTAINER
+=================================*/
+
+.guest-panel{
+position:absolute;
+top:100%;
+right:0; /* open toward right side */
+z-index:100;
+
+background:white;
+border-radius:14px;
+box-shadow:0 20px 50px rgba(0,0,0,0.15);
+
+padding:22px;
+margin-top:10px;
+
+display:grid;
+grid-template-columns:1.2fr 1fr; /* left passengers / right cabin */
+gap:25px;
+
+min-width:380px;
+
+animation:fadeIn .25s ease;
+}
+
+
+/* ===============================
+   LEFT SIDE PASSENGERS
+=================================*/
+
+.guest-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:6px 0;
+
+font-size:14px;
+}
+
+.guest-row span{
+font-size:15px;
+font-weight:500;
+color:#222;
+}
+
+
+/* ===============================
+   COUNTER CONTROLS
+=================================*/
+
+.guest-row div{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.guest-row button{
+
+width:34px;
+height:34px;
+
+border-radius:8px;
+border:none;
+
+background:#2f3e4d;
+color:white;
+
+font-size:16px;
+font-weight:600;
+
+cursor:pointer;
+transition:.2s ease;
+}
+
+.guest-row button:hover{
+background:#1f2a35;
+}
+
+.guest-row div span{
+width:26px;
+text-align:center;
+font-weight:600;
+}
+
+
+/* ===============================
+   CABIN SECTION (RIGHT SIDE)
+=================================*/
+
+.cabin-section{
+display:flex;
+flex-direction:column;
+gap:12px;
+
+padding-left:10px;
+border-left:1px solid #eee;
+}
+
+.cabin-section label{
+display:flex;
+align-items:center;
+gap:10px;
+
+cursor:pointer;
+
+font-size:15px;
+font-weight:500;
+color:#333;
+}
+
+.cabin-section input[type="radio"]{
+accent-color:#f4a524; /* Travelian gold */
+width:16px;
+height:16px;
+}
+
+
+/* ===============================
+   OPTIONAL CABIN TITLE
+=================================*/
+
+.cabin-section::before{
+content:"Cabin Class";
+font-size:13px;
+font-weight:600;
+color:#888;
+margin-bottom:5px;
+}
+
+
+/* ===============================
+   ANIMATION
+=================================*/
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(-6px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}

@@ -1,0 +1,362 @@
+/* ================= ABOUT INTRO ================= */
+
+.about-intro{
+padding:100px 20px;
+background:white;
+}
+
+.about-intro-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.about-text p{
+margin-bottom:18px;
+color:#6b7280;
+line-height:1.7;
+font-size:16px;
+}
+
+.about-image img{
+width:100%;
+max-width:480px;
+display:block;
+margin:auto;
+}
+
+/* responsive */
+
+@media(max-width:900px){
+
+.about-intro-grid{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+}
+
+
+/* ================= ABOUT MISSION & VISION ================= */
+
+.about-mission{
+padding:100px 20px;
+background:#f8fafc;
+text-align:center;
+}
+
+.mission-grid{
+margin-top:60px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:40px;
+}
+
+.mission-card{
+background:white;
+padding:50px 40px;
+border-radius:20px;
+position:relative;
+transition:0.3s;
+box-shadow:0 10px 35px rgba(0,0,0,0.06);
+border-top:4px solid #f4881a;
+}
+
+.mission-card:hover{
+transform:translateY(-8px);
+box-shadow:0 18px 50px rgba(0,0,0,0.12);
+}
+
+.mission-icon{
+width:80px;
+height:80px;
+background:#30398c;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+margin:auto;
+margin-bottom:20px;
+box-shadow:0 8px 20px rgba(48,57,140,0.3);
+}
+
+.mission-card h3{
+font-size:24px;
+margin-bottom:15px;
+font-weight:600;
+color:#1f2937;
+}
+
+.mission-card p{
+color:#6b7280;
+line-height:1.7;
+font-size:16px;
+max-width:420px;
+margin:auto;
+}
+
+/* responsive */
+
+@media(max-width:800px){
+
+.mission-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+/* ================= WHY CHOOSE TRAVELIAN ================= */
+
+.why-travelian{
+padding:100px 20px;
+background:#f9fafb;
+text-align:center;
+max-width:1200px;
+margin:auto;
+}
+
+.why-grid{
+margin-top:60px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+}
+
+.why-card{
+background:white;
+padding:35px;
+border-radius:18px;
+transition:.3s;
+box-shadow:0 8px 30px rgba(0,0,0,0.05);
+}
+
+.why-card:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.why-icon{
+width:70px;
+height:70px;
+background:#30398c;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+margin:auto;
+margin-bottom:18px;
+}
+
+.why-card h3{
+font-size:20px;
+margin-bottom:10px;
+}
+
+.why-card p{
+font-size:15px;
+color: #222;
+line-height:1.6;
+}
+
+/* responsive */
+
+@media(max-width:1000px){
+
+.why-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+.why-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+/* ================= ABOUT SERVICES ================= */
+
+.about-services{
+padding:100px 20px;
+background:#f8fafc;
+text-align:center;
+}
+
+.services-grid{
+margin-top:60px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.service-card{
+background:white;
+padding:35px;
+border-radius:18px;
+transition:.3s;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+.service-card:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
+}
+
+.service-icon{
+width:70px;
+height:70px;
+background:#f4881a;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+margin:auto;
+margin-bottom:18px;
+}
+
+.service-card h3{
+font-size:20px;
+margin-bottom:10px;
+}
+
+.service-card p{
+font-size:15px;
+color:#6b7280;
+line-height:1.6;
+}
+
+/* responsive */
+
+@media(max-width:1000px){
+
+.services-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+.services-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+/* ================= ABOUT STATS ================= */
+
+.about-stats{
+padding:90px 20px;
+background:linear-gradient(135deg,#30398c,#1f2a75);
+color:white;
+text-align:center;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+}
+
+.stat-card{
+padding:30px;
+}
+
+.stat-icon{
+width:70px;
+height:70px;
+background:#f4881a;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+margin:auto;
+margin-bottom:15px;
+}
+
+.stat-card h3{
+font-size:34px;
+font-weight:700;
+margin-bottom:5px;
+}
+
+.stat-card p{
+font-size:15px;
+color:#e5e7eb;
+}
+
+/* responsive */
+
+@media(max-width:900px){
+
+.stats-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:500px){
+
+.stats-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+
+/* ================= ABOUT CTA ================= */
+
+.about-cta{
+padding:100px 20px;
+background:linear-gradient(135deg,#30398c,#1f2a75);
+color:white;
+text-align:center;
+}
+
+.about-cta h2{
+font-size:36px;
+margin-bottom:15px;
+font-weight:700;
+}
+
+.about-cta span{
+color:#f4881a;
+}
+
+.about-cta p{
+max-width:650px;
+margin:auto;
+font-size:16px;
+line-height:1.7;
+margin-bottom:30px;
+color:#e5e7eb;
+}
+
+.about-cta-btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+background:#25D366;
+color:white;
+padding:14px 26px;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+font-size:16px;
+transition:.3s;
+}
+
+.about-cta-btn:hover{
+background:#1ebe5d;
+transform:translateY(-3px);
+}

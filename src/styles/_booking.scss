@@ -1,0 +1,682 @@
+/* ===================================== */
+/* BOOKING CONFIRMED PAGE                */
+/* ===================================== */
+
+.confirm-page {
+  min-height: 100vh;
+  background: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.confirm-body {
+  padding-top: 60px;
+  padding-bottom: 48px;
+}
+
+.confirm-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.confirm-success-banner {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.confirm-success-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #047857;
+  margin: 0 0 8px 0;
+}
+
+.confirm-success-desc {
+  font-size: 15px;
+  color: #059669;
+  margin: 0;
+}
+
+.confirm-main {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .confirm-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.confirm-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.confirm-accordion {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+}
+
+.confirm-accordion-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+.confirm-accordion-btn:hover {
+  background: #f9fafb;
+}
+
+.confirm-section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.confirm-icon {
+  font-size: 20px;
+}
+
+.confirm-accordion-icon {
+  width: 16px;
+  height: 10px;
+  flex-shrink: 0;
+}
+
+.confirm-accordion-icon.rotate-0 {
+  transform: rotate(0deg);
+}
+
+.confirm-accordion-content {
+  padding: 0 20px 20px;
+}
+
+.confirm-accordion-content.collapsed {
+  display: none;
+}
+
+.confirm-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.confirm-detail-card {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.confirm-detail-icon {
+  font-size: 20px;
+  color: #6b7280;
+}
+
+.confirm-detail-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+
+.confirm-detail-value.status-confirmed {
+  color: #22c55e;
+}
+
+.confirm-detail-label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.confirm-flight-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.confirm-flight-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.confirm-flight-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.confirm-airline-name {
+  font-weight: 600;
+}
+
+.confirm-flight-number {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.confirm-flight-date {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.confirm-route-preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.confirm-route-arrow {
+  color: #9ca3af;
+}
+
+.confirm-segment {
+  padding: 16px 0;
+}
+
+.confirm-segment-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.confirm-segment-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #2067da;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.confirm-segment-date {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.confirm-segment-airport {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.confirm-segment-duration {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.confirm-table-wrap {
+  overflow-x: auto;
+}
+
+.confirm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.confirm-table th,
+.confirm-table td {
+  padding: 12px 16px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.confirm-table th {
+  font-weight: 600;
+  color: #374151;
+  background: #f9fafb;
+}
+
+.confirm-table td {
+  color: #4b5563;
+}
+
+.confirm-additional {
+  padding: 8px 0;
+}
+
+.confirm-additional-title {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.confirm-additional-item {
+  padding: 8px 0;
+  font-size: 14px;
+  color: #374151;
+}
+
+.confirm-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.confirm-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+}
+
+.confirm-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.confirm-org-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.confirm-org-row:last-child {
+  margin-bottom: 0;
+}
+
+.confirm-org-icon {
+  font-size: 18px;
+}
+
+.confirm-org-label {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.confirm-org-value {
+  font-size: 14px;
+  color: #111;
+}
+
+.confirm-org-badge {
+  background: #eff6ff;
+  color: #2067da;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.confirm-org-badge-gray {
+  background: #f3f4f6;
+  color: #6b7280;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.confirm-pnr-timer {
+  text-align: center;
+}
+
+.confirm-pnr-heading {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.confirm-pnr-countdown {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.confirm-pnr-countdown li {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.confirm-pnr-countdown span {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111;
+  font-variant-numeric: tabular-nums;
+}
+
+.confirm-pnr-expiry {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 16px;
+}
+
+.confirm-issue-btn {
+  width: 100%;
+  padding: 12px 20px;
+  background: #2067da;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.confirm-issue-btn:hover {
+  background: #1f57b8;
+}
+
+.confirm-actions-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.confirm-action-btn {
+  flex: 1;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.confirm-action-btn:hover {
+  background: #f9fafb;
+}
+
+.confirm-price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.confirm-price-row.confirm-price-total {
+  font-weight: 600;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 8px;
+  padding-top: 12px;
+}
+
+.confirm-fare-heading {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #374151;
+}
+
+/* Flight details side sheet modal */
+.book-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9998;
+  transition: opacity 0.3s ease-out;
+}
+
+.book-details-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 704px;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 16px 0 0 16px;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.book-details-modal.open {
+  transform: translateX(0);
+}
+
+.book-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.book-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: #111;
+}
+
+.book-modal-close {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #2067da;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.book-modal-close:hover {
+  background: #eff6ff;
+}
+
+.book-modal-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+.book-modal-tab {
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  position: relative;
+}
+
+.book-modal-tab:hover {
+  color: #2067da;
+}
+
+.book-modal-tab.active {
+  color: #2067da;
+}
+
+.book-modal-tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #2067da;
+}
+
+.book-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  background: #f9fafb;
+}
+
+.book-modal-section {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.book-modal-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #111;
+}
+
+.book-modal-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 13px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.book-modal-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.book-modal-timeline-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.book-modal-timeline-left {
+  flex-shrink: 0;
+  width: 60px;
+}
+
+.book-modal-timeline-time {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+
+.book-modal-timeline-date {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.book-modal-timeline-line-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.book-modal-timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2067da;
+  flex-shrink: 0;
+}
+
+.book-modal-timeline-line {
+  width: 2px;
+  flex: 1;
+  min-height: 40px;
+  background: #e5e7eb;
+}
+
+.book-modal-timeline-row-last .book-modal-timeline-right {
+  padding-bottom: 0;
+}
+
+.book-modal-timeline-right {
+  flex: 1;
+  padding-bottom: 20px;
+}
+
+.book-modal-location {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+
+.book-modal-airport {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.book-modal-duration {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.book-modal-airline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #374151;
+}
+
+.book-modal-airline img {
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+.book-modal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.book-modal-table th,
+.book-modal-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border: 1px solid #e5e7eb;
+}
+
+.book-modal-table th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.book-modal-table td:first-child {
+  font-weight: 500;
+  width: 140px;
+}

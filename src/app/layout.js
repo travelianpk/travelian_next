@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./globals.scss";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
@@ -10,9 +10,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
-      <ScrollToTop />
-      <FloatingWhatsApp />
+      <body>
+        {children}
+        <ScrollToTop />
+        <FloatingWhatsApp />
+      </body>
     </html>
   );
 }
