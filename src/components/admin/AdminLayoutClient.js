@@ -267,7 +267,7 @@ export default function DashboardShell({ session, children }) {
       </aside>
 
       {/* Main content - clean empty area */}
-      <main className="app-main">
+      <main className="app-main" style={{ display: "flex", flexDirection: "column", minHeight: "calc(100vh - 57px)" }}>
         <div className="app-content-header">
           <div className="container-fluid">
             <div className="row">
@@ -287,10 +287,10 @@ export default function DashboardShell({ session, children }) {
             </div>
           </div>
         </div>
-        <div className="app-content">
+        <div className="app-content" style={{ flex: 1 }}>
           <div className="container-fluid">{children}</div>
         </div>
-        <footer className="app-footer">
+        <footer className="app-footer" style={{ marginTop: "auto" }}>
           <div className="float-end d-none d-sm-inline">Travelian Admin</div>
           <strong>
             Copyright &copy; {new Date().getFullYear()}{" "}

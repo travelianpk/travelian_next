@@ -1,7 +1,6 @@
 import "./globals.scss";
 import Providers from "@/components/SessionProvider";
-import ScrollToTop from "@/components/ScrollToTop";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import AdminAwareWrapper from "@/components/AdminAwareWrapper";
 
 export const metadata = {
   title: "Travelian",
@@ -14,8 +13,7 @@ export default function RootLayout({ children }) {
       <body>
         <Providers>
           {children}
-          <ScrollToTop />
-          <FloatingWhatsApp />
+          <AdminAwareWrapper />
         </Providers>
       </body>
     </html>
