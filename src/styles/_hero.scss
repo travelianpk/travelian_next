@@ -1,8 +1,14 @@
 /* ================= HERO ================= */
 
+/* Web: natural image size */
 .hero {
   position: relative;
   width: 100%;
+  overflow: hidden;
+}
+
+/* Home: allow dropdowns to extend outside hero */
+.hero--home {
   overflow: visible;
 }
 
@@ -10,6 +16,79 @@
   width: 100%;
   height: auto;
   display: block;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    top: 65%;
+    padding: 0 12px;
+    padding-top: 60px; /* ensure From field clears header */
+  }
+
+  .hero--home {
+    overflow: visible;
+    padding-bottom: 48px;
+  }
+}
+
+/* Mobile only (≤480px) */
+@media (max-width: 480px) {
+  .hero:not(.hero--home) {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    aspect-ratio: auto;
+    margin-bottom: 0;
+  }
+
+  .hero:not(.hero--home) .hero-image {
+    width: 100%;
+    height: auto;
+    min-width: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .hero.hero--home {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  .hero-content {
+    top: 62%;
+    padding: 0 8px;
+    padding-top: 50px; /* ensure From field clears header */
+  }
+
+  /* Home: stack flight search below banner (no overlay) */
+  .hero--home {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    padding-bottom: 24px;
+    aspect-ratio: auto;
+  }
+
+  .hero--home .hero-image {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+  }
+
+  .hero--home .hero-content {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    padding: 20px 8px 0;
+    margin-top: calc(-120px + 7vh); /* overlap, moved 3% above */
+  }
 }
 
 
@@ -22,13 +101,16 @@
 
 .hero-content {
   position: absolute;
-  top: 65%;
+  top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
+  max-width: 1200px;
+  padding: 0 16px;
   display: flex;
   justify-content: center;
   z-index: 2;
 }
+
 
 /* ================= FLIGHT SEARCH ================= */

@@ -63,28 +63,35 @@ const [infants,setInfants] = useState(0);
 
 const [cabin,setCabin] = useState("Economy");
 
+const [isMobile, setIsMobile] = useState(false);
+useEffect(() => {
+  const check = () => setIsMobile(window.innerWidth < 768);
+  check();
+  window.addEventListener("resize", check);
+  return () => window.removeEventListener("resize", check);
+}, []);
+
 const totalPassengers = adults + children + infants;
 
 
 /* close dropdowns */
 
-useEffect(()=>{
-
-function handleClick(e){
-
-if(wrapperRef.current && !wrapperRef.current.contains(e.target)){
-setActiveField(null);
-setCalendarOpen(false);
-setShowGuestPanel(false);
-setShowCabinPanel(false);
-}
-
-}
-
-document.addEventListener("mousedown",handleClick);
-return()=>document.removeEventListener("mousedown",handleClick);
-
-},[]);
+useEffect(() => {
+  function handleOutsideClick(e) {
+    if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+      setActiveField(null);
+      setCalendarOpen(false);
+      setShowGuestPanel(false);
+      setShowCabinPanel(false);
+    }
+  }
+  document.addEventListener("mousedown", handleOutsideClick);
+  document.addEventListener("touchstart", handleOutsideClick);
+  return () => {
+    document.removeEventListener("mousedown", handleOutsideClick);
+    document.removeEventListener("touchstart", handleOutsideClick);
+  };
+}, []);
 
 
 /* airport filter */
@@ -155,12 +162,24 @@ return(
     <div className="rs-route-group">
       <div className="rs-field airport-wrapper">
         <FaPlaneDeparture className="rs-icon" />
-        <input
-          value={from}
-          placeholder="Flying from"
-onFocus={()=>{setActiveField("from");setAirportQuery("")}}
-onChange={(e)=>{setFrom(e.target.value);setAirportQuery(e.target.value)}}
-/>
+        <div className="input-clear-wrapper">
+          <input
+            value={from}
+            placeholder="Flying from"
+            onFocus={()=>{setActiveField("from");setAirportQuery("")}}
+            onChange={(e)=>{setFrom(e.target.value);setAirportQuery(e.target.value)}}
+          />
+          {from && (
+            <button
+              type="button"
+              className="clear-btn"
+              onClick={(e)=>{e.stopPropagation();setFrom("");setAirportQuery("");}}
+              aria-label="Clear"
+            >
+              ✕
+            </button>
+          )}
+        </div>
 
 {activeField==="from" && (
           <div className="rs-airport-dropdown">
@@ -182,12 +201,24 @@ onChange={(e)=>{setFrom(e.target.value);setAirportQuery(e.target.value)}}
 
       <div className="rs-field airport-wrapper">
         <FaPlaneArrival className="rs-icon" />
-        <input
-          value={to}
-          placeholder="Flying to"
-          onFocus={()=>{setActiveField("to");setAirportQuery("")}}
-          onChange={(e)=>{setTo(e.target.value);setAirportQuery(e.target.value)}}
-        />
+        <div className="input-clear-wrapper">
+          <input
+            value={to}
+            placeholder="Flying to"
+            onFocus={()=>{setActiveField("to");setAirportQuery("")}}
+            onChange={(e)=>{setTo(e.target.value);setAirportQuery(e.target.value)}}
+          />
+          {to && (
+            <button
+              type="button"
+              className="clear-btn"
+              onClick={(e)=>{e.stopPropagation();setTo("");setAirportQuery("");}}
+              aria-label="Clear"
+            >
+              ✕
+            </button>
+          )}
+        </div>
         {activeField==="to" && (
           <div className="rs-airport-dropdown">
             {filteredAirports.slice(0,30).map((airport,i)=>(
@@ -225,7 +256,7 @@ onClick={()=>setCalendarOpen(!calendarOpen)}
 readOnly
 value={
 dateSelected
-? range[0].startDate.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" })
+? range[0].startDate.toLocaleDateString("en-GB", { day: "numeric", month: "numeric", year: "numeric" })
 : "Select date"
 }
 />
@@ -343,28 +374,6 @@ Search
 
 
 </div>
-
-
-{calendarOpen && (
-
-<div className="rs-calendar">
-
-<DateRange
-editableDateInputs={false}
-minDate={new Date()}
-onChange={(item)=>{
-setRange([item.selection]);
-setDateSelected(true);
-setCalendarOpen(false);
-}}
-ranges={range}
-months={2}
-direction="horizontal"
-/>
-
-</div>
-
-)}
 
 </div>
 

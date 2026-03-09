@@ -29,7 +29,6 @@ export default function FlightSearch() {
 
   /* trip type */
   const [tripType, setTripType] = useState("oneway");
-  const [showTripMenu, setShowTripMenu] = useState(false);
 
   /* route */
   const [from, setFrom] = useState("");
@@ -61,6 +60,14 @@ export default function FlightSearch() {
   /* validation error */
   const [error, setError] = useState("");
 
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const totalPassengers = adults + children + infants;
 
   const guestSummary =
@@ -70,21 +77,22 @@ export default function FlightSearch() {
     ", " +
     cabin;
 
-  /* outside click */
+  /* outside click – close dropdowns when clicking outside */
   useEffect(() => {
-
-    function handleClick(e) {
+    function handleOutsideClick(e) {
       if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
         setActiveField(null);
         setShowGuestPanel(false);
         setCalendarOpen(false);
-        setShowTripMenu(false);
       }
     }
 
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+    };
   }, []);
 
   /* airport filter */
@@ -173,51 +181,38 @@ export default function FlightSearch() {
 {/* HEADER */}
 
 <div className="flight-header">
-
-<div className="trip-dropdown">
-
-<button
-className="trip-button"
-onClick={() => setShowTripMenu(!showTripMenu)}
->
-
-{tripType === "oneway" && "One way"}
-{tripType === "round" && "Return"}
-{tripType === "multi" && "Multi-city"} ▼
-
-</button>
-
-{showTripMenu && (
-
-<div className="trip-menu">
-
-<div
-className="trip-item"
-onClick={()=>{setTripType("oneway");setShowTripMenu(false)}}
->
-One way
-</div>
-
-<div
-className="trip-item"
-onClick={()=>{setTripType("round");setShowTripMenu(false)}}
->
-Return
-</div>
-
-<div
-className="trip-item"
-onClick={()=>{setTripType("multi");setShowTripMenu(false)}}
->
-Multi-city
-</div>
-
-</div>
-
-)}
-
-</div>
-
+  <div className="trip-pill-row">
+    <label className={`trip-pill-option ${tripType === "oneway" ? "active" : ""}`}>
+      <input
+        type="radio"
+        name="trip-home"
+        value="oneway"
+        checked={tripType === "oneway"}
+        onChange={() => setTripType("oneway")}
+      />
+      <span>One-way</span>
+    </label>
+    <label className={`trip-pill-option ${tripType === "round" ? "active" : ""}`}>
+      <input
+        type="radio"
+        name="trip-home"
+        value="return"
+        checked={tripType === "round"}
+        onChange={() => setTripType("round")}
+      />
+      <span>Round trip</span>
+    </label>
+    <label className={`trip-pill-option ${tripType === "multi" ? "active" : ""}`}>
+      <input
+        type="radio"
+        name="trip-home"
+        value="multicity"
+        checked={tripType === "multi"}
+        onChange={() => setTripType("multi")}
+      />
+      <span>Multi-city</span>
+    </label>
+  </div>
 <div className="flight-title">
 ✈ Book Flights
 </div>
@@ -377,50 +372,59 @@ onClick={() => selectAirport(airport)}
 </div>
 
 {/* DATE */}
-
-<div className="search-card">
-
-<FaCalendarAlt className="field-icon" />
-
-<div
-className="field-content"
-onClick={() => setCalendarOpen(!calendarOpen)}
->
-
-<label>Travelling when?</label>
-
-<div className="input-clear-wrapper">
-
-<input
-readOnly
-placeholder="Add dates"
-value={
-dateSelected
-? tripType === "oneway"
-? range[0].startDate.toLocaleDateString()
-: range[0].startDate.toLocaleDateString() +
-" - " +
-range[0].endDate.toLocaleDateString()
-: ""
-}
-/>
-
-{dateSelected && (
-<button
-className="clear-btn"
-onClick={(e)=>{
-e.stopPropagation()
-setDateSelected(false)
-}}
->
-✕
-</button>
-)}
-
-</div>
-
-</div>
-
+<div className="date-field-wrapper">
+  <div className="search-card">
+    <FaCalendarAlt className="field-icon" />
+    <div
+      className="field-content"
+      onClick={() => setCalendarOpen(!calendarOpen)}
+    >
+      <label>Travelling when?</label>
+      <div className="input-clear-wrapper">
+        <input
+          readOnly
+          placeholder="Add dates"
+          value={
+            dateSelected
+              ? tripType === "oneway"
+                ? range[0].startDate.toLocaleDateString("en-GB", { day: "numeric", month: "numeric", year: "numeric" })
+                : range[0].startDate.toLocaleDateString("en-GB", { day: "numeric", month: "numeric", year: "numeric" }) +
+                  " - " +
+                  range[0].endDate.toLocaleDateString("en-GB", { day: "numeric", month: "numeric", year: "numeric" })
+              : ""
+          }
+        />
+        {dateSelected && (
+          <button
+            className="clear-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              setDateSelected(false);
+            }}
+          >
+            ✕
+          </button>
+        )}
+      </div>
+    </div>
+  </div>
+  {calendarOpen && (
+    <div className="calendar-popup">
+      <DateRange
+        editableDateInputs={false}
+        minDate={new Date()}
+        onChange={(item) => {
+          setRange([item.selection]);
+          setDateSelected(true);
+          if (tripType === "oneway") setCalendarOpen(false);
+        }}
+        moveRangeOnFirstSelection={false}
+        ranges={range}
+        months={isMobile ? 1 : 3}
+        direction="horizontal"
+      />
+    </div>
+  )}
 </div>
 
 {/* GUESTS */}
@@ -444,27 +448,36 @@ setDateSelected(false)
       <div className="guest-left">
 
         <div className="guest-row">
-          <span>Adults</span>
-          <div>
-            <button onClick={() => setAdults(Math.max(1, adults - 1))}>-</button>
+          <div className="guest-row-label">
+            <span className="guest-row-title">Adults</span>
+            <span className="guest-row-desc">(12 years and above)</span>
+          </div>
+          <div className="guest-row-controls">
+            <button onClick={() => setAdults(Math.max(1, adults - 1))}>−</button>
             <span>{adults}</span>
             <button onClick={() => setAdults(adults + 1)}>+</button>
           </div>
         </div>
 
         <div className="guest-row">
-          <span>Children</span>
-          <div>
-            <button onClick={() => setChildren(Math.max(0, children - 1))}>-</button>
+          <div className="guest-row-label">
+            <span className="guest-row-title">Children</span>
+            <span className="guest-row-desc">(2 to 11 years)</span>
+          </div>
+          <div className="guest-row-controls">
+            <button onClick={() => setChildren(Math.max(0, children - 1))}>−</button>
             <span>{children}</span>
             <button onClick={() => setChildren(children + 1)}>+</button>
           </div>
         </div>
 
         <div className="guest-row">
-          <span>Infants</span>
-          <div>
-            <button onClick={() => setInfants(Math.max(0, infants - 1))}>-</button>
+          <div className="guest-row-label">
+            <span className="guest-row-title">Infants</span>
+            <span className="guest-row-desc">(0 to less than 2 years)</span>
+          </div>
+          <div className="guest-row-controls">
+            <button onClick={() => setInfants(Math.max(0, infants - 1))}>−</button>
             <span>{infants}</span>
             <button onClick={() => setInfants(infants + 1)}>+</button>
           </div>
@@ -473,32 +486,42 @@ setDateSelected(false)
       </div>
 
       <div className="cabin-section">
+        <span className="cabin-section-title">Cabin Class</span>
 
-        <label>
+        <label className="cabin-option">
           <input
             type="radio"
             checked={cabin === "Economy"}
             onChange={() => setCabin("Economy")}
           />
-          Economy
+          <span>Economy</span>
         </label>
 
-        <label>
+        <label className="cabin-option">
           <input
             type="radio"
             checked={cabin === "Business"}
             onChange={() => setCabin("Business")}
           />
-          Business
+          <span>Business</span>
         </label>
 
-        <label>
+        <label className="cabin-option">
           <input
             type="radio"
             checked={cabin === "First"}
             onChange={() => setCabin("First")}
           />
-          First
+          <span>First</span>
+        </label>
+
+        <label className="cabin-option">
+          <input
+            type="radio"
+            checked={cabin === "Premium Economy"}
+            onChange={() => setCabin("Premium Economy")}
+          />
+          <span>Premium Economy</span>
         </label>
 
       </div>
@@ -516,35 +539,6 @@ Search
 </button>
 
 </div>
-
-{/* CALENDAR */}
-
-{calendarOpen && (
-
-<div className="calendar-popup">
-
-<DateRange
-editableDateInputs={false}
-minDate={new Date()}
-onChange={(item) => {
-
-setRange([item.selection]);
-setDateSelected(true);
-
-if (tripType === "oneway") {
-setCalendarOpen(false);
-}
-
-}}
-moveRangeOnFirstSelection={false}
-ranges={range}
-months={3}
-direction="horizontal"
-/>
-
-</div>
-
-)}
 
 </div>
 

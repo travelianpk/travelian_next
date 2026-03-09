@@ -114,6 +114,15 @@
   color: #30398c;
 }
 
+/* Auth Error */
+
+.auth-error {
+  color: #e53935;
+  font-size: 13px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
 /* Remember + Forgot */
 
 .options {
@@ -326,25 +335,58 @@
   top: 100%;
   left: 0;
   width: 200%;
-  margin-top: 6px;
+  min-width: 100%;
+  margin-top: 8px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid #e5e7eb;
   z-index: 20;
-  max-height: 260px;
+  max-height: 280px;
   overflow-y: auto;
 }
 
 .airport-item {
   display: flex;
   justify-content: space-between;
-  padding: 12px 16px;
+  align-items: center;
+  padding: 14px 18px;
   cursor: pointer;
+  transition: background .15s;
+  border-bottom: 1px solid #f9fafb;
+}
+
+.airport-item:last-child {
+  border-bottom: none;
 }
 
 .airport-item:hover {
   background: #f5f7fa;
 }
+
+@media (max-width: 768px) {
+  .airport-dropdown {
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .airport-item {
+    padding: 12px 16px;
+  }
+
+  .airport-code {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .airport-dropdown {
+    max-height: 240px;
+  }
+}
+
 
 .airport-city {
   font-weight: 600;
@@ -383,23 +425,94 @@
 .guest-panel{
 position:absolute;
 top:100%;
-right:0; /* open toward right side */
+right:0;
 z-index:100;
 
-background:white;
-border-radius:14px;
-box-shadow:0 20px 50px rgba(0,0,0,0.15);
+background:#fff;
+border-radius:16px;
+box-shadow:0 24px 48px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.08);
+border:1px solid #e5e7eb;
 
-padding:22px;
+padding:24px;
 margin-top:10px;
 
 display:grid;
-grid-template-columns:1.2fr 1fr; /* left passengers / right cabin */
-gap:25px;
+grid-template-columns:1.2fr 1fr;
+gap:28px;
 
-min-width:380px;
+min-width:400px;
 
 animation:fadeIn .25s ease;
+}
+
+@media (max-width: 768px) {
+  .guest-panel {
+    left: 0;
+    right: 0;
+    min-width: unset;
+    width: 100%;
+    padding: 16px;
+    gap: 20px;
+    grid-template-columns: 1fr;
+  }
+
+  .cabin-section {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid #eee;
+    padding-top: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .guest-panel {
+    padding: 12px;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .cabin-section {
+    border-left: 1px solid #eee;
+    border-top: none;
+    padding-left: 16px;
+    padding-top: 0;
+  }
+
+  .guest-row {
+    padding: 8px 0;
+  }
+
+  .guest-row-title {
+    font-size: 13px;
+  }
+
+  .guest-row-desc {
+    font-size: 10px;
+  }
+
+  .guest-row button {
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+  }
+
+  .guest-row-controls {
+    gap: 5px;
+  }
+
+  .guest-row-controls span {
+    width: 18px;
+    font-size: 12px;
+  }
+
+  .cabin-section-title {
+    font-size: 11px;
+  }
+
+  .cabin-option {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
 }
 
 
@@ -411,55 +524,70 @@ animation:fadeIn .25s ease;
 display:flex;
 justify-content:space-between;
 align-items:center;
-
-padding:6px 0;
-
+padding:12px 0;
 font-size:14px;
+border-bottom:1px solid #f3f4f6;
 }
 
-.guest-row span{
+.guest-row:last-child{
+border-bottom:none;
+}
+
+.guest-row-label{
+display:flex;
+flex-direction:column;
+gap:2px;
+}
+
+.guest-row-title{
 font-size:15px;
-font-weight:500;
-color:#222;
+font-weight:600;
+color:#1f2937;
 }
 
+.guest-row-desc{
+font-size:11px;
+font-weight:400;
+color:#6b7280;
+}
 
 /* ===============================
    COUNTER CONTROLS
 =================================*/
 
-.guest-row div{
+.guest-row-controls{
 display:flex;
 align-items:center;
-gap:12px;
+gap:8px;
+}
+
+.guest-row-controls span{
+width:22px;
+text-align:center;
+font-weight:600;
+font-size:14px;
+color:#1f2937;
 }
 
 .guest-row button{
-
-width:34px;
-height:34px;
-
-border-radius:8px;
+width:28px;
+height:28px;
+border-radius:6px;
 border:none;
-
-background:#2f3e4d;
+background:#30398c;
 color:white;
-
-font-size:16px;
-font-weight:600;
-
+font-size:14px;
+font-weight:500;
+line-height:1;
 cursor:pointer;
 transition:.2s ease;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .guest-row button:hover{
-background:#1f2a35;
-}
-
-.guest-row div span{
-width:26px;
-text-align:center;
-font-weight:600;
+background:#1f2560;
 }
 
 
@@ -470,41 +598,48 @@ font-weight:600;
 .cabin-section{
 display:flex;
 flex-direction:column;
-gap:12px;
-
-padding-left:10px;
-border-left:1px solid #eee;
-}
-
-.cabin-section label{
-display:flex;
-align-items:center;
 gap:10px;
-
-cursor:pointer;
-
-font-size:15px;
-font-weight:500;
-color:#333;
+padding-left:20px;
+border-left:1px solid #e5e7eb;
 }
 
-.cabin-section input[type="radio"]{
-accent-color:#f4a524; /* Travelian gold */
-width:16px;
-height:16px;
-}
-
-
-/* ===============================
-   OPTIONAL CABIN TITLE
-=================================*/
-
-.cabin-section::before{
-content:"Cabin Class";
+.cabin-section-title{
+display:block;
 font-size:13px;
 font-weight:600;
-color:#888;
-margin-bottom:5px;
+color:#6b7280;
+text-transform:uppercase;
+letter-spacing:0.5px;
+margin-bottom:6px;
+}
+
+.cabin-option{
+display:flex;
+align-items:center;
+gap:12px;
+cursor:pointer;
+font-size:15px;
+font-weight:500;
+color:#374151;
+padding:8px 12px;
+border-radius:10px;
+transition:background .2s, color .2s;
+}
+
+.cabin-option:hover{
+background:#f9fafb;
+color:#1f2937;
+}
+
+.cabin-option input[type="radio"]{
+accent-color:#f4881a;
+width:18px;
+height:18px;
+flex-shrink:0;
+}
+
+.cabin-option span{
+flex:1;
 }
 
 
@@ -524,4 +659,45 @@ opacity:1;
 transform:translateY(0);
 }
 
+}
+
+/* ================= AGENT PORTAL ================= */
+
+.agent-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 60px 20px;
+}
+
+.agent-container {
+  max-width: 640px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 40px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.agent-container h1 {
+  margin-bottom: 16px;
+  font-size: 1.75rem;
+  color: #222;
+}
+
+.agent-container p {
+  margin-bottom: 12px;
+  color: #555;
+}
+
+.agent-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #30398c;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.agent-link:hover {
+  text-decoration: underline;
 }

@@ -1,4 +1,5 @@
 import "./globals.scss";
+import Providers from "@/components/SessionProvider";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
@@ -11,9 +12,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {children}
-        <ScrollToTop />
-        <FloatingWhatsApp />
+        <Providers>
+          {children}
+          <ScrollToTop />
+          <FloatingWhatsApp />
+        </Providers>
       </body>
     </html>
   );

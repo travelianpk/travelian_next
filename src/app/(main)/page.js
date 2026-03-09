@@ -16,7 +16,7 @@ export default function Home() {
     <main>
 
       {/* HERO SECTION */}
-      <section className="hero">
+      <section className="hero hero--home">
         <Image
           src="/images/homeban.svg"
           alt="Travelian Home"

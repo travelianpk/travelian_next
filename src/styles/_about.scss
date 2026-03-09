@@ -37,6 +37,52 @@ text-align:center;
 
 }
 
+@media (max-width: 768px) {
+  .about-intro {
+    padding: 60px 16px;
+  }
+
+  .about-mission {
+    padding: 60px 16px;
+  }
+
+  .mission-card {
+    padding: 40px 24px;
+  }
+
+  .why-travelian {
+    padding: 60px 16px;
+  }
+
+  .about-services,
+  .about-stats,
+  .about-cta {
+    padding: 60px 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-intro {
+    padding: 24px 12px 40px;
+  }
+
+  .about-text p {
+    font-size: 15px;
+  }
+
+  .about-mission {
+    padding: 40px 12px;
+  }
+
+  .mission-card h3 {
+    font-size: 20px;
+  }
+
+  .why-travelian {
+    padding: 40px 12px;
+  }
+}
+
 
 /* ================= ABOUT MISSION & VISION ================= */
 

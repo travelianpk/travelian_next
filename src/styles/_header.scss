@@ -64,6 +64,7 @@
 .header-actions {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .cta {
@@ -87,6 +88,82 @@
   background: #30398c;
   color: #fff;
   border-color: #30398c;
+}
+
+.cta-outline {
+  cursor: pointer;
+  font-family: inherit;
+  border-color: #c0c0c0;
+}
+
+.cta-outline:hover {
+  background: #30398c;
+  color: #fff;
+  border-color: #30398c;
+}
+
+/* Header + Agent Portal – responsive */
+@media (max-width: 768px) {
+  .site-container {
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .logo-img {
+    height: 28px;
+  }
+
+  .menu-btn {
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 8px 10px;
+  }
+
+  .header-actions {
+    flex-shrink: 0;
+  }
+
+  .cta {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-container {
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .logo-img {
+    height: 24px;
+  }
+
+  .menu-btn .menu-text {
+    display: none;
+  }
+
+  .menu-btn {
+    padding: 10px;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  .menu-btn .menu-icon {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .cta {
+    height: 36px;
+    padding: 0 10px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
 }
 
 /* ===================================== */

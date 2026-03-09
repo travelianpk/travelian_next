@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 import {
   FaBars,
@@ -15,6 +16,7 @@ import {
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const pathname = usePathname();
+  const { data: session, status } = useSession();
 
   // Close menu on route change
   useEffect(() => {
@@ -152,9 +154,24 @@ export default function Header() {
 
         {/* Right Side */}
         <div className="header-actions">
-          <Link href="/signin" className="cta" onClick={closeMenu}>
-            Agent Portal
-          </Link>
+          {status === "authenticated" ? (
+            <>
+              <Link href="/agent" className="cta" onClick={closeMenu}>
+                Agent Portal
+              </Link>
+              <button
+                type="button"
+                className="cta cta-outline"
+                onClick={() => signOut({ callbackUrl: "/" })}
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link href="/signin" className="cta" onClick={closeMenu}>
+              Agent Portal
+            </Link>
+          )}
         </div>
 
       </div>

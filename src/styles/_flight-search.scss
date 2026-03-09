@@ -1,3 +1,7 @@
+.date-field-wrapper {
+  position: relative;
+}
+
 .flight-container {
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(20px);
@@ -31,6 +35,7 @@
   gap: 14px;
   transition: 0.2s ease;
   height: 72px;
+  min-width: 0;
 }
 
 
@@ -57,6 +62,11 @@
   font-size: 15px;
   font-weight: 500;
   width: 100%;
+  min-width: 0;
+}
+
+.search-card .input-clear-wrapper input {
+  padding-right: 32px;
 }
 
 /* Icons */
@@ -108,38 +118,127 @@
   background: #b8923f;
 }
 
+/* ================= FLIGHT SEARCH RESPONSIVE ================= */
+
+/* Tablet – stack grid */
 @media (max-width: 1100px) {
-  .search-grid {
-    grid-template-columns: 1fr;
+  .flight-container {
+    width: 94%;
+    padding: 12px;
+    margin: 0 12px;
   }
 
-  
+  .search-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .search-grid .swap-btn {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto;
+    flex-shrink: 0;
+  }
 
   .search-main-btn {
     width: 100%;
+    height: 48px;
+    font-size: 16px;
   }
 }
 
-/* ================= RESPONSIVE ================= */
-
+/* Tablet – flight header */
 @media (max-width: 992px) {
-  .search-bar {
-    flex-direction: column;
-    gap: 10px;
-    padding: 15px;
+  .flight-header {
+    padding: 0 8px;
+    margin-bottom: 16px;
   }
 
-  .search-field {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid #e5e7eb;
+  .flight-title {
+    font-size: 22px;
+  }
+
+  .trip-dropdown {
+    left: 12px;
+  }
+
+  .trip-button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .flight-container {
+    width: 96%;
+    padding: 12px 10px;
+    margin: 0 8px;
+    border-radius: 16px;
+  }
+
+  .search-card {
+    padding: 12px 14px;
+    height: auto;
+    min-height: 60px;
+  }
+
+  .search-card label {
+    font-size: 11px;
+  }
+
+  .search-card input {
+    font-size: 14px;
+  }
+
+  .field-icon {
+    font-size: 14px;
   }
 
   .search-main-btn {
+    height: 50px;
+    font-size: 16px;
+    border-radius: 14px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .flight-container {
     width: 100%;
+    padding: 12px 8px;
+    margin: 0 4px;
+    border-radius: 12px;
   }
 
-  
+  .flight-header {
+    margin-bottom: 12px;
+  }
+
+  .flight-title {
+    font-size: 18px;
+  }
+
+  .trip-button {
+    padding: 5px 8px;
+    font-size: 11px;
+    gap: 4px;
+    border-radius: 6px;
+  }
+
+  .search-card {
+    padding: 10px 12px;
+    min-height: 56px;
+    gap: 10px;
+  }
+
+  .search-card label {
+    font-size: 10px;
+  }
+
+  .search-card input {
+    font-size: 13px;
+  }
 }
 
 /* HEADER ROW (Trip type + Title) */
@@ -160,64 +259,74 @@ text-align:center;
 letter-spacing:.5px;
 }
 
-/* TRIP DROPDOWN POSITION */
-.trip-dropdown{
-position:absolute;
-left:18px;
-top: 15px;
+/* TRIP TYPE PILLS */
+.trip-pill-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #f5f7fb;
+  border-radius: 10px;
+  padding: 4px;
+  position: absolute;
+  left: 18px;
+  top: 15px;
 }
 
-/* TRIP BUTTON */
-.trip-button{
-background:#30398c  ;
-color:white;
-padding:8px 14px;
-border-radius:8px;
-border:1px solid rgba(255,255,255,0.3);
-font-size:14px;
-cursor:pointer;
-display:flex;
-align-items:center;
-gap:6px;
+.trip-pill-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  transition: 0.2s ease;
+  white-space: nowrap;
 }
 
-/* DROPDOWN MENU */
-.trip-menu{
-position:absolute;
-top:45px;
-left:0;
-background:white;
-width:220px;
-border-radius:14px;
-box-shadow:0 20px 60px rgba(0,0,0,0.18);
-z-index:9999;
-overflow:hidden;
-animation:dropdown .2s ease;
+.trip-pill-option:hover {
+  color: #1f2937;
 }
 
-/* DROPDOWN ITEMS */
-.trip-item{
-padding:14px 18px;
-font-size:15px;
-display:flex;
-align-items:center;
-gap:10px;
-cursor:pointer;
-transition:.2s;
+.trip-pill-option.active {
+  background: #30398c;
+  color: white;
 }
 
-.trip-item:hover{
-background:#f5f7fa;
+.trip-pill-option input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-/* DROPDOWN ANIMATION */
-@keyframes dropdown{
-from{
-opacity:0;
-transform:translateY(-8px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+@media (max-width: 480px) {
+  .flight-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .trip-pill-row {
+    position: static;
+    transform: none;
+    left: auto;
+    width: 100%;
+    justify-content: center;
+    padding: 4px;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .flight-title {
+    order: -1;
+  }
+
+  .trip-pill-option {
+    padding: 8px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
 }

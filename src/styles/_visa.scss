@@ -60,6 +60,18 @@ grid-template-columns:repeat(2,1fr);
 
 }
 
+@media (max-width: 768px) {
+  .visa-why {
+    padding: 32px 16px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .visa-why {
+    padding: 24px 12px 32px;
+  }
+}
+
 @media(max-width:600px){
 
 .visa-why-grid{
@@ -129,11 +141,8 @@ font-weight:600;
 background:#1ebe5d;
 }
 
-.visa-multi-title{
-margin-top:70px;
-font-size:24px;
-font-weight:600;
-color:#1f2937;
+.visa-destinations h2.section-title:not(:first-of-type) {
+  margin-top: 70px;
 }
 
 /* responsive */

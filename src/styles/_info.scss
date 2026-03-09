@@ -21,6 +21,18 @@
   padding: 24px;
 }
 
+@media (max-width: 768px) {
+  .info-container {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-container {
+    padding: 12px;
+  }
+}
+
 .info-nav {
   margin-bottom: 24px;
   padding-bottom: 16px;
@@ -195,6 +207,7 @@
   align-items: flex-start;
   margin-top: 24px;
 }
+
 
 .helpcenter-sidebar {
   width: 240px;
@@ -386,11 +399,21 @@
 @media (max-width: 768px) {
   .helpcenter-layout {
     flex-direction: column;
+    gap: 20px;
   }
 
   .helpcenter-sidebar {
     width: 100%;
     position: static;
+  }
+
+  .helpcenter-title {
+    font-size: 1.25rem;
+  }
+
+  .helpcenter-tab {
+    padding: 10px 14px;
+    font-size: 14px;
   }
 
   .helpcenter-categories {
@@ -410,5 +433,16 @@
 
   .helpcenter-cta-btn {
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .helpcenter-tabs {
+    flex-direction: column;
+  }
+
+  .helpcenter-tab {
+    width: 100%;
+    justify-content: center;
   }
 }

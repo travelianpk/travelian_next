@@ -4,30 +4,12 @@ import { FaWhatsapp } from "react-icons/fa";
 export default function HotelDestinations() {
 
   const destinations = [
-    {
-      name: "Dubai",
-      image: "/images/flags/se.png"
-    },
-    {
-      name: "Makkah",
-      image: "/images/hotels/makkah.jpg"
-    },
-    {
-      name: "Madinah",
-      image: "/images/hotels/madinah.jpg"
-    },
-    {
-      name: "Istanbul",
-      image: "/images/hotels/istanbul.jpg"
-    },
-    {
-      name: "Kuala Lumpur",
-      image: "/images/hotels/kualalumpur.jpg"
-    },
-    {
-      name: "Bangkok",
-      image: "/images/hotels/bangkok.jpg"
-    }
+    { name: "Dubai", image: "/images/hotelsimgs/dubai.jpg" },
+    { name: "Makkah", image: "/images/hotelsimgs/makka.jpg" },
+    { name: "Madinah", image: "/images/hotelsimgs/Madinah.jpg" },
+    { name: "Istanbul", image: "/images/hotelsimgs/Istanbul.jpg" },
+    { name: "Kuala Lumpur", image: "/images/hotelsimgs/KualaLumpur.jpg" },
+    { name: "Bangkok", image: "/images/hotelsimgs/Bangkok.jpg" }
   ];
 
   return (
@@ -62,8 +44,9 @@ export default function HotelDestinations() {
                   <h3>{item.name}</h3>
 
                   <a
-                    href={`https://wa.me/923244440014?text=Hello Travelian, I want hotel booking in ${item.name}`}
+                    href={`https://wa.me/923244440014?text=Hello Travelian, I want hotel booking in ${encodeURIComponent(item.name)}`}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="hotel-btn"
                   >
                     <FaWhatsapp /> Book on WhatsApp

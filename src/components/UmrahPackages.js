@@ -71,24 +71,22 @@ export default function UmrahPackages() {
               className={`package-card ${pkg.featured ? "featured" : ""}`}
               key={index}
             >
+              <div className="package-card-body">
+                <h3>{pkg.name}</h3>
 
-              
+                <div className="package-price">
+                  {pkg.price}
+                </div>
 
-              <h3>{pkg.name}</h3>
-
-              {/* PRICE */}
-              <div className="package-price">
-                {pkg.price}
+                <ul className="package-features">
+                  {pkg.features.map((feature, i) => (
+                    <li key={i}>
+                      <span className="feature-icon">{feature.icon}</span>
+                      <span className="feature-text">{feature.text}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              <ul>
-                {pkg.features.map((feature, i) => (
-                  <li key={i}>
-                    <span className="feature-icon">{feature.icon}</span>
-                    {feature.text}
-                  </li>
-                ))}
-              </ul>
 
               <a
                 href="https://wa.me/923244440014"
@@ -98,7 +96,6 @@ export default function UmrahPackages() {
               >
                 Ask on WhatsApp
               </a>
-
             </div>
 
           ))}

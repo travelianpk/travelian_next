@@ -2,6 +2,7 @@ import {
   FaComments,
   FaUniversity,
   FaFileAlt,
+  FaEnvelopeOpenText,
   FaPassport,
   FaPlaneDeparture
 } from "react-icons/fa";
@@ -23,6 +24,11 @@ export default function StudyProcess() {
       icon: <FaFileAlt />,
       title: "Application Submission",
       text: "Complete support for preparing and submitting university applications."
+    },
+    {
+      icon: <FaEnvelopeOpenText />,
+      title: "Offer & Acceptance",
+      text: "Receive your offer letter and we guide you through acceptance and next steps."
     },
     {
       icon: <FaPassport />,

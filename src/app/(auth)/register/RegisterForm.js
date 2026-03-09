@@ -8,6 +8,8 @@ export default function RegisterForm() {
     agency: "",
     name: "",
     email: "",
+    password: "",
+    confirmPassword: "",
     city: "",
     cnic: "",
     mobile: "",
@@ -16,6 +18,7 @@ export default function RegisterForm() {
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const cnicPattern = /^[0-9]{5}-[0-9]{7}-[0-9]{1}$/;
   const mobilePattern = /^[0-9]{10,13}$/;
@@ -32,6 +35,11 @@ export default function RegisterForm() {
     if (!form.name) newErrors.name = "Name required";
     if (!emailPattern.test(form.email))
       newErrors.email = "Valid email required";
+    if (!form.password) newErrors.password = "Password required";
+    else if (form.password.length < 6)
+      newErrors.password = "Password must be at least 6 characters";
+    if (form.password !== form.confirmPassword)
+      newErrors.confirmPassword = "Passwords do not match";
     if (!form.city) newErrors.city = "City required";
     if (!cnicPattern.test(form.cnic))
       newErrors.cnic = "Valid CNIC required";
@@ -43,13 +51,43 @@ export default function RegisterForm() {
     return Object.keys(newErrors).length === 0;
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    setErrors({});
 
-    if (validate()) {
+    if (!validate()) return;
+
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: form.email,
+          password: form.password,
+          name: form.name,
+          agency: form.agency || null,
+          city: form.city || null,
+          cnic: form.cnic || null,
+          mobile: form.mobile || null,
+          license: form.license || null,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrors({ submit: data.error || "Registration failed" });
+        setLoading(false);
+        return;
+      }
+
       setSubmitted(true);
-      console.log("Registration Data:", form);
+    } catch (err) {
+      setErrors({ submit: "Registration failed. Please try again." });
     }
+    setLoading(false);
   }
 
   if (submitted) {
@@ -57,10 +95,10 @@ export default function RegisterForm() {
       <div className="register-wrapper">
         <div className="thank-you">
           <h3>Thank You!</h3>
-          <p>Your registration request has been submitted successfully.</p>
-          <p>Our team will contact you after verification.</p>
+          <p>Your account has been created successfully.</p>
+          <p>You can now sign in with your email and password.</p>
           <br />
-          <Link href="/signin" className="submit-btn">
+          <Link href="/signin" className="submit-btn" style={{ display: "inline-block", textAlign: "center" }}>
             Go to Login
           </Link>
         </div>
@@ -120,6 +158,30 @@ export default function RegisterForm() {
 
             <div className="form-group">
               <input
+                name="password"
+                type="password"
+                placeholder="Password (min 6 characters)"
+                onChange={handleChange}
+              />
+              {errors.password && (
+                <span className="error">{errors.password}</span>
+              )}
+            </div>
+
+            <div className="form-group">
+              <input
+                name="confirmPassword"
+                type="password"
+                placeholder="Confirm Password"
+                onChange={handleChange}
+              />
+              {errors.confirmPassword && (
+                <span className="error">{errors.confirmPassword}</span>
+              )}
+            </div>
+
+            <div className="form-group">
+              <input
                 name="city"
                 placeholder="City"
                 onChange={handleChange}
@@ -169,9 +231,15 @@ export default function RegisterForm() {
               </a>
             </div>
 
+            {errors.submit && (
+              <div className="form-group full-width">
+                <span className="error">{errors.submit}</span>
+              </div>
+            )}
+
             <div className="form-group full-width">
-              <button type="submit" className="submit-btn">
-                Submit Registration
+              <button type="submit" className="submit-btn" disabled={loading}>
+                {loading ? "Creating account..." : "Submit Registration"}
               </button>
             </div>
           </div>

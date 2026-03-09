@@ -7,6 +7,38 @@
   background: #f8f9fb;
 }
 
+@media (max-width: 768px) {
+  .why-section {
+    padding: 40px 16px;
+  }
+
+  .why-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-section {
+    padding: 30px 12px;
+  }
+
+  .why-title {
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+
+  .why-card {
+    padding: 30px 20px;
+  }
+
+  .why-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+  }
+}
+
 .why-container {
   width: 90%;
   max-width: 1300px;
@@ -180,6 +212,26 @@
   }
 }
 
+@media (max-width: 768px) {
+  .services-section {
+    padding: 60px 16px;
+  }
+
+  .service-card {
+    padding: 40px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-section {
+    padding: 40px 12px;
+  }
+
+  .services-title {
+    font-size: 22px;
+  }
+}
+
 
 /* ===============================
    SMART PREMIUM TESTIMONIALS
@@ -189,6 +241,38 @@
   padding: 90px 0;
   background: #f8f9fb;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .testimonials-section {
+    padding: 60px 16px;
+  }
+
+  .testimonials-title {
+    font-size: 28px;
+    margin-bottom: 36px;
+  }
+
+  .testimonial-card {
+    min-width: 240px;
+    max-width: 240px;
+    padding: 24px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonials-section {
+    padding: 40px 12px;
+  }
+
+  .testimonials-title {
+    font-size: 22px;
+  }
+
+  .testimonial-card {
+    min-width: 220px;
+    max-width: 220px;
+  }
 }
 
 .testimonials-container {
@@ -361,6 +445,93 @@
   color: #f4881a;
 }
 
+/* Get in Touch – mobile responsive */
+@media (max-width: 768px) {
+  .contact-quick-section {
+    padding: 40px 16px 50px;
+  }
+
+  .contact-heading {
+    font-size: 26px;
+    margin-bottom: 32px;
+  }
+
+  .contact-quick-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    overflow-x: visible;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .contact-card {
+    min-width: 0;
+    max-width: 160px;
+    flex: 1 1 calc(50% - 8px);
+    padding: 24px 16px;
+  }
+
+  .contact-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .contact-card h3 {
+    font-size: 15px;
+  }
+
+  .contact-card p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-quick-section {
+    padding: 32px 12px 40px;
+  }
+
+  .contact-heading {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+
+  .contact-quick-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .contact-card {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 20px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+  }
+
+  .contact-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .contact-card h3 {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .contact-card p {
+    font-size: 13px;
+  }
+}
 
 /* ===============================
    AUTHORIZED & ACCREDITED SECTION

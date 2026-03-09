@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -8,10 +10,38 @@ export default function SignInForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/agent";
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log("Login attempt:", { email, password });
+    setError("");
+    setLoading(true);
+
+    try {
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (result?.error) {
+        setError("Invalid email or password");
+        setLoading(false);
+        return;
+      }
+
+      if (result?.ok) {
+        router.push(callbackUrl);
+        router.refresh();
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+    }
+    setLoading(false);
   }
 
   return (
@@ -75,9 +105,13 @@ export default function SignInForm() {
             <a href="#">Forgot Password?</a>
           </div>
 
+          {error && (
+            <p className="auth-error">{error}</p>
+          )}
+
           {/* Button */}
-          <button type="submit" className="login-btn">
-            LOGIN
+          <button type="submit" className="login-btn" disabled={loading}>
+            {loading ? "Signing in..." : "LOGIN"}
           </button>
 
         </form>

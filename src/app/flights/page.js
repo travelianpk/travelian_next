@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Filters from "@/components/Filters";
@@ -55,7 +56,9 @@ Average price per person. The price includes taxes and fees.
 
 
 {/* Flight cards */}
-<FlightResults />
+<Suspense fallback={<div className="results-loading">Loading flights...</div>}>
+  <FlightResults />
+</Suspense>
 
 
 </section>

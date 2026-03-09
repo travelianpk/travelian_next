@@ -125,6 +125,41 @@
   }
 }
 
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 20px 0;
+  }
+
+  .footer-container {
+    padding-bottom: 24px;
+  }
+
+  .footer-description {
+    font-size: 13px;
+  }
+
+  .footer-socials a {
+    width: 44px;
+    height: 44px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 24px 12px 0;
+  }
+
+  .footer-container {
+    gap: 36px;
+  }
+
+  .footer-bottom {
+    padding: 14px 12px;
+    font-size: 12px;
+  }
+}
+
 
 
 /* =====================================
